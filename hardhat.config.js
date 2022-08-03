@@ -1,42 +1,48 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
-require('@openzeppelin/hardhat-upgrades');
-require('dotenv').config();
+require("@openzeppelin/hardhat-upgrades");
+require("dotenv").config();
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  defaultNetwork: 'hardhat',
+  defaultNetwork: "hardhat",
 
   networks: {
     localhost: {
-      url: 'http://127.0.0.1:8545/',
-      chainId: 31337
+      url: "http://127.0.0.1:8545/",
+      chainId: 31337,
     },
     mainnet: {
-      url: 'https://eth-mainnet.g.alchemy.com/v2/' + process.env.ALCHEMY_API_KEY_ETHEREUM,
+      url:
+        "https://eth-mainnet.g.alchemy.com/v2/" +
+        process.env.ALCHEMY_API_KEY_ETHEREUM,
       chainId: 1,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 10000000000, // 10 gwei
     },
     polygonMumbai: {
-      url: 'https://polygon-mumbai.g.alchemy.com/v2/' + process.env.ALCHEMY_API_KEY_MUMBAI,
+      url:
+        "https://polygon-mumbai.g.alchemy.com/v2/" +
+        process.env.ALCHEMY_API_KEY_MUMBAI,
       chainId: 80001,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 2000000000, // 2 gwei
     },
     polygon: {
-      url: 'https://polygon-mainnet.g.alchemy.com/v2/' + process.env.ALCHEMY_API_KEY_POLYGON,
+      url:
+        "https://polygon-mainnet.g.alchemy.com/v2/" +
+        process.env.ALCHEMY_API_KEY_POLYGON,
       chainId: 137,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 45000000000, // 45 gwei
     },
     arbitrumTestnet: {
-      url: 'https://rinkeby.arbitrum.io/rpc',
+      url: "https://rinkeby.arbitrum.io/rpc",
       chainId: 421611,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
@@ -51,44 +57,66 @@ module.exports = {
       gasPrice: 1000000000, // 1 gwei
     },
     optimisticKovan: {
-      url: 'https://kovan.optimism.io',
+      url: "https://kovan.optimism.io",
       chainId: 69,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 1000000000, // 1 gwei
     },
     optimisticEthereum: {
-      url: 'https://opt-mainnet.g.alchemy.com/v2/' + process.env.ALCHEMY_API_KEY_OPTIMISM,
+      url:
+        "https://opt-mainnet.g.alchemy.com/v2/" +
+        process.env.ALCHEMY_API_KEY_OPTIMISM,
       chainId: 10,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 1000000000, // 1 gwei
     },
-    sokol: { // Gnosis Chain testnet
-      url: 'https://sokol.poa.network',
+    sokol: {
+      // Gnosis Chain testnet
+      url: "https://sokol.poa.network",
       chainId: 77,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 20000000000, // 20 gwei
     },
-    xdai: { // Gnosis Chain mainnet
-      url: 'https://rpc.gnosischain.com',
+    xdai: {
+      // Gnosis Chain mainnet
+      url: "https://rpc.gnosischain.com",
       chainId: 100,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 20000000000, // 20 gwei
     },
-    bsc: { // BNB Smart Chain mainnet
-      url: 'https://bscrpc.com',
+    bsc: {
+      // BNB Smart Chain mainnet
+      url: "https://bscrpc.com",
       chainId: 56,
       accounts: [process.env.DEPLOYER_PRIVATE_KEY],
       gas: "auto", // gas limit
       gasPrice: 5000000000, // 5 gwei
-    }
+    },
+    fusespark: {
+      // Fuse Chain testnet
+      url: "https://rpc.fusespark.io",
+      chainId: 123,
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY],
+      gas: "auto", // gas limit
+      gasPrice: 1000000000, // 1 gwei
+    },
+    fuse: {
+      // Fuse Chain mainnet
+      url: "https://rpc.fuse.io",
+      chainId: 122,
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY],
+      gas: "auto", // gas limit
+      gasPrice: 1000000000, // 1 gwei
+    },
   },
 
   etherscan: {
-    apiKey: { // all possible key names here: https://gist.github.com/tempe-techie/95a3ad4e81b46c895928a0524fc2b7ac
+    apiKey: {
+      // all possible key names here: https://gist.github.com/tempe-techie/95a3ad4e81b46c895928a0524fc2b7ac
       mainnet: process.env.ETHERSCAN_API_KEY,
       polygonMumbai: process.env.POLYGONSCAN_API_KEY,
       polygon: process.env.POLYGONSCAN_API_KEY,
@@ -98,8 +126,8 @@ module.exports = {
       arbitrumOne: process.env.ARBISCAN_API_KEY,
       bsc: process.env.BSC_API_KEY,
       sokol: "randomstring",
-      xdai: "randomstring"
-    }
+      xdai: "randomstring",
+    },
   },
 
   solidity: {
@@ -107,9 +135,8 @@ module.exports = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200
-      }
-    }
-  }
-  
+        runs: 200,
+      },
+    },
+  },
 };
